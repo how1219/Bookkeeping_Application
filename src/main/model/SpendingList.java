@@ -10,7 +10,7 @@ public class SpendingList {
     private List<Spending> listOfSpending;
     private double value = 0;
 
-    // Constructs a spending list
+    // Construct a spending list
     public SpendingList() {
         listOfSpending = new ArrayList<>();
     }
@@ -18,7 +18,7 @@ public class SpendingList {
     // REQUIRES: only one spending is added each time
     // MODIFIES: this
     // EFFECTS: add spending to spending list
-    public void addSpending(double amountSpent, String category, int date) {
+    public void addSpending(double amountSpent, String category, String date) {
         Spending spending = new Spending(amountSpent, category, date);
         listOfSpending.add(spending);
     }
@@ -26,10 +26,10 @@ public class SpendingList {
     // REQUIRES: only one spending is removed each time
     // MODIFIES: this
     // EFFECTS: remove spending from spending list
-    public void removeSpending(double amountSpent, String category, int date) {
-        Spending spending = new Spending(amountSpent, category, date);
-        listOfSpending.remove(spending);
+    public void removeSpending(int removeIndex) {
+        listOfSpending.remove(removeIndex);
     }
+
 
     // MODIFIES: this
     // EFFECT: calculate the total spending amount in the spending list
