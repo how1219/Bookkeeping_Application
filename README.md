@@ -39,7 +39,7 @@ get my attention, but summing them up will reveal whether I need to cut back.
 - As a user, I want to be able to add an income to my record.
 - As a user, I want to be able to delete a spending from my record.
 - As a user, I want to be able to delete an income from my record.
-- As a user, I want to be able to summarize my total daily spending and incomes.
+- As a user, I want to be able to summarize my total spending and incomes.
 - As a user, I want to be able to categorize my spending.
 
  
