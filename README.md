@@ -30,8 +30,16 @@ mistake has been made.
 
 The reason I am interested in this project is that I feel I am in need of such an app to record and summarize 
 my financial activities. For me I spend different amounts every day on different things (food, clothes, books, etc. 
-all cost money). I also have a part-time job, so I have regular income. I wish I could design an app to log them, so I can
-figure out if I've saved up, and remind me if I need to change my lifestyle? Spending a little at a time doesn't 
+all cost money). I also have a part-time job, so I have regular income. I wish I could design an app to log them, so 
+I can figure out if I've saved up, and remind me if I need to change my lifestyle? Spending a little at a time doesn't 
 get my attention, but summing them up will reveal whether I need to cut back.
+
+## User Stories
+- As a user, I want to be able to add a spending to my record.
+- As a user, I want to be able to add an income to my record.
+- As a user, I want to be able to delete a spending from my record.
+- As a user, I want to be able to delete an income from my record.
+- As a user, I want to be able to summarize my total daily spending and incomes.
+- As a user, I want to be able to categorize my spending.
 
  
