@@ -26,8 +26,9 @@ public class SpendingList {
     // REQUIRES: only one spending is removed each time
     // MODIFIES: this
     // EFFECTS: remove spending from spending list
-    public void removeSpending(int removeIndex) {
+    public List<Spending> removeSpending(int removeIndex) {
         listOfSpending.remove(removeIndex);
+        return listOfSpending;
     }
 
 
@@ -44,4 +45,7 @@ public class SpendingList {
         return 0;
     }
 
+    public List<Spending> getListOfSpending() {
+        return listOfSpending;
+    }
 }
