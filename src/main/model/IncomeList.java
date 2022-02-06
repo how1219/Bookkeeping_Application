@@ -24,8 +24,9 @@ public class IncomeList {
     // REQUIRES: only one income is removed each time
     // MODIFIES: this
     // EFFECTS: remove income from income list
-    public void removeIncome(int removeIndex) {
+    public List<Income> removeIncome(int removeIndex) {
         listOfIncomes.remove(removeIndex);
+        return listOfIncomes;
     }
 
     // MODIFIES: this
@@ -41,4 +42,7 @@ public class IncomeList {
         return 0;
     }
 
+    public List<Income> getListOfIncomes() {
+        return listOfIncomes;
+    }
 }
