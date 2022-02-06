@@ -6,11 +6,21 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class SpendingTest {
+    private Spending spending1;
     private SpendingList spendingList1;
 
     @BeforeEach
     void runBefore() {
         spendingList1 = new SpendingList();
+        spending1 = new Spending(100, "food","2022-02-04");
+    }
+
+    @Test
+    void testSpendingConstructor() {
+        assertEquals(100, spending1.getAmount());
+        assertEquals("food", spending1.getCategory());
+        assertEquals("2022-02-04", spending1.getDate());
+
     }
 
     @Test

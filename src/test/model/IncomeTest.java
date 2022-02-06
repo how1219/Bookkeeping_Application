@@ -8,10 +8,18 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class IncomeTest {
 
     private IncomeList incomeList1;
+    private Income income1;
 
     @BeforeEach
     void runBefore() {
         incomeList1 = new IncomeList();
+        income1 = new Income(10000,"2022-02-04");
+    }
+
+    @Test
+    void testIncomeConstructor() {
+        assertEquals(100, income1.getAmount());
+        assertEquals("2022-02-04", income1.getDate());
     }
 
     @Test
