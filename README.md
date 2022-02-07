@@ -9,10 +9,10 @@ My bookkeeping application allows users to record their financial activities.
 Features are:
 - recording spending
 - recording incomes
-- calculating daily total spending
-- calculating daily total incomes
-- clearly displaying financial summary with dates
-- allowing to note the source of income and where the money is spent
+- calculating total spending
+- calculating total incomes
+- clearly displaying financial summary with date
+- allowing to note where the money is spent
 
 ## Target user groups
 This application will be more targeted to **young people** (such as college students) who have a small expenses but 
@@ -39,7 +39,8 @@ get my attention, but summing them up will reveal whether I need to cut back.
 - As a user, I want to be able to add an income to my record.
 - As a user, I want to be able to delete a spending from my record.
 - As a user, I want to be able to delete an income from my record.
-- As a user, I want to be able to summarize my total spending and incomes.
+- As a user, I want to be able to see my spending and income lists.
+- As a user, I want to be able to calculate my total spending and income amount.
 - As a user, I want to be able to categorize my spending.
 - As a user, I want to be able to know the date.
  

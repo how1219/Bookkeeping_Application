@@ -32,11 +32,7 @@ public class UserInterface {
             command = scn1.nextInt();
 
             if (command == 0) {
-                System.out.println("Are you sure you want to quit? Yes -> enter 1; No -> enter 0");
-                double quit = scn1.nextDouble();
-                if (command == 1) {
-                    ifFlag = false;
-                }
+                ifFlag = false;
             } else {
                 readSelected(command);
             }
@@ -52,7 +48,7 @@ public class UserInterface {
         System.out.println("\t 4 -> <calculate total spending amount>");
         System.out.println("\t 5 -> <show my income list>");
         System.out.println("\t 6 -> <calculate total income amount>");
-        System.out.println("\t 0 -> <quit>");
+        System.out.println("\t 0 -> ** quit **");
     }
 
     // MODIFIES: this
@@ -123,6 +119,7 @@ public class UserInterface {
             case "b":
                 System.out.println("Your spending list: ");
                 System.out.println(spendingList1.getListOfSpending());
+                System.out.println();
                 System.out.println("Please enter which one you would like to delete");
                 System.out.println("(ex. first spending -> 1; second spending -> 2)");
                 int deleteThis = scn1.nextInt() - 1;
@@ -140,18 +137,17 @@ public class UserInterface {
     // MODIFIES: this
     // EFFECTS: add an income to an income list
     private void addIncome() {
-        incomeList1 = new IncomeList();
-        System.out.println("Enter amount of the income: $");
+        System.out.println("Enter income amount: $");
         double amountEntered = scn1.nextDouble();
 
         scn1.nextLine();
 
-        System.out.println("Enter date (year-month-date xxxx-xx-xx): ");
+        System.out.println("Enter date (yyyy-mm-dd): ");
         String dateEntered = scn1.nextLine();
 
         incomeList1.addIncome(amountEntered, dateEntered);
 
-        System.out.println("You successfully added a new income: amount $" + amountEntered);
+        System.out.println("You've successfully added a new income: amount $" + amountEntered);
         System.out.println("at " + dateEntered);
 
         System.out.println();
@@ -178,6 +174,7 @@ public class UserInterface {
             case "b":
                 System.out.println("Your income list: ");
                 System.out.println(incomeList1.getListOfIncomes());
+                System.out.println();
                 System.out.println("Please enter which one you would like to delete");
                 System.out.println("(ex. first income -> 1; second income -> 2)");
                 int deleteThis = scn1.nextInt() - 1;
