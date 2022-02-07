@@ -8,15 +8,17 @@ public class Income {
     // Construct an income
     // EFFECTS: set the amount to incomeAmount; set the date to incomeDate
     public Income(double incomeAmount, String incomeDate) {
-        // a date is in the form "xxxx-xx-xx"(year-month-day)
+        // a date is in the form "yyyy-mm-dd"
         amount = incomeAmount;
         date = incomeDate;
     }
 
+    // EFFECTS: return income amount
     public double getAmount() {
         return amount;
     }
 
+    // EFFECTS: return income date
     public String getDate() {
         return date;
     }

@@ -10,20 +10,23 @@ public class Spending {
     // EFFECTS: set the amount to spendingAmount; set the category to spendingCategory;
     //          set the date to spendingDate
     public Spending(double spendingAmount, String spendingCategory, String spendingDate) {
-        // a date is in the form "xxxx-xx-xx"(year-month-day)
+        // a date is in the form "yyyy-mm-dd".
         amount = spendingAmount;
         category = spendingCategory;
         date = spendingDate;
     }
 
+    // EFFECTS: return spending amount
     public double getAmount() {
         return amount;
     }
 
+    // EFFECTS: return spending category
     public String getCategory() {
         return category;
     }
 
+    // EFFECTS: return spending date
     public String getDate() {
         return date;
     }

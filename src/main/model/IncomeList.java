@@ -42,6 +42,7 @@ public class IncomeList {
         return 0;
     }
 
+    // EFFECTS: return the income list
     public List<Income> getListOfIncomes() {
         return listOfIncomes;
     }

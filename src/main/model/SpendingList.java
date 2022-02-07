@@ -45,6 +45,7 @@ public class SpendingList {
         return 0;
     }
 
+    // EFFECTS: return the spending list
     public List<Spending> getListOfSpending() {
         return listOfSpending;
     }
