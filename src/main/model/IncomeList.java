@@ -33,6 +33,7 @@ public class IncomeList {
     // EFFECT: calculate the total income amount in the income list
     //         If the list is empty, return 0
     public double calculateTotal() {
+        value = 0;
         if (listOfIncomes.size() != 0) {
             for (Income income: listOfIncomes) {
                 value += income.getAmount();

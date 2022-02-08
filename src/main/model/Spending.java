@@ -31,4 +31,9 @@ public class Spending {
         return date;
     }
 
+    @Override
+    public String toString() {
+        return "Spending{"
+                + "amount=" + amount + ", category='" + category + '\'' + ", date='" + date + '\'' + '}';
+    }
 }

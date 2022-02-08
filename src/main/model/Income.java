@@ -23,6 +23,9 @@ public class Income {
         return date;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Income{"
+                + "amount=" + amount + ", date='" + date + '\'' + '}';
+    }
 }

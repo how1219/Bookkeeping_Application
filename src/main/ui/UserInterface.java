@@ -97,7 +97,7 @@ public class UserInterface {
 
         System.out.println();
         System.out.println("additional services:");
-        System.out.println("\t a -> calculate total spending");
+        System.out.println("\t a -> calculate total spending amount");
         System.out.println("\t b -> remove a spending");
         System.out.println("\t s -> show my spending list");
         System.out.println("\t c -> back to main menu");
@@ -113,7 +113,7 @@ public class UserInterface {
 
         switch (commandString) {
             case "a":
-                System.out.println("Your total spending so far is $" + spendingList1.calculateTotal());
+                System.out.println("Your total spending amount so far is $" + spendingList1.calculateTotal());
 
                 break;
             case "b":
@@ -152,7 +152,7 @@ public class UserInterface {
 
         System.out.println();
         System.out.println("additional services:");
-        System.out.println("\t a -> calculate total income");
+        System.out.println("\t a -> calculate total income amount");
         System.out.println("\t b -> remove an income");
         System.out.println("\t s -> show my income list");
         System.out.println("\t c -> back to main menu");
@@ -187,7 +187,4 @@ public class UserInterface {
                 break;
         }
     }
-
-
-
 }

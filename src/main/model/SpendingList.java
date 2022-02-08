@@ -37,6 +37,7 @@ public class SpendingList {
     //         If the list is empty, return 0
     public double calculateTotal() {
         if (listOfSpending.size() != 0) {
+            value = 0;
             for (Spending spending: listOfSpending) {
                 value += spending.getAmount();
             }
