@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class IncomeTest {
 
@@ -34,5 +35,13 @@ public class IncomeTest {
         incomeList1.addIncome(500, "2022-02-04");
         incomeList1.addIncome(700, "2022-02-04");
         assertEquals(500 + 700, incomeList1.calculateTotal());
+        incomeList1.addIncome(1000, "2022-02-07");
+        assertEquals(500 + 700 +1000, incomeList1.calculateTotal());
+        assertEquals(3, incomeList1.getListOfIncomes().size());
+    }
+
+    @Test
+    void getDateTest() {
+        assertEquals("2022-02-04", income1.getDate());
     }
 }

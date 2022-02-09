@@ -35,12 +35,12 @@ I can figure out if I've saved up, and remind me if I need to change my lifestyl
 get my attention, but summing them up will reveal whether I need to cut back.
 
 ## User Stories
-- As a user, I want to be able to add a spending to my record.
-- As a user, I want to be able to add an income to my record.
-- As a user, I want to be able to delete a spending from my record.
-- As a user, I want to be able to delete an income from my record.
-- As a user, I want to be able to see my spending and income lists.
+- As a user, I want to be able to add a spending to my spending list.
+- As a user, I want to be able to add an income to my income list.
+- As a user, I want to be able to delete a spending from my spending list.
+- As a user, I want to be able to delete an income from my income list.
+- As a user, I want to be able to display my spending and income lists.
 - As a user, I want to be able to calculate my total spending and income amount.
 - As a user, I want to be able to categorize my spending.
-- As a user, I want to be able to know the date.
+- As a user, I want to be able to display the date.
  

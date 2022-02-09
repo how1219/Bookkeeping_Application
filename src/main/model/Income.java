@@ -24,6 +24,7 @@ public class Income {
     }
 
     @Override
+    // Effects: print the income list in terms of string
     public String toString() {
         return "Income{"
                 + "amount=" + amount + ", date='" + date + '\'' + '}';

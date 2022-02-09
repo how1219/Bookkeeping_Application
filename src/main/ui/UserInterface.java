@@ -62,12 +62,12 @@ public class UserInterface {
             System.out.println("Your spending list: ");
             System.out.println(spendingList1.getListOfSpending());
         } else if (command == 4) {
-            System.out.println("Your total spending so far is $" + spendingList1.calculateTotal());
+            System.out.println("Your total spending amount so far is $" + spendingList1.calculateTotal());
         } else if (command == 5) {
             System.out.println("Your income list: ");
             System.out.println(incomeList1.getListOfIncomes());
         }  else if (command == 6) {
-            System.out.println("Your total income so far is $" + incomeList1.calculateTotal());
+            System.out.println("Your total income amount so far is $" + incomeList1.calculateTotal());
         } else {
             System.out.println("invalid");
         }

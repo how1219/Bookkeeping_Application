@@ -32,6 +32,7 @@ public class Spending {
     }
 
     @Override
+    // Effects: print the spending list in terms of string
     public String toString() {
         return "Spending{"
                 + "amount=" + amount + ", category='" + category + '\'' + ", date='" + date + '\'' + '}';

@@ -37,5 +37,7 @@ class SpendingTest {
         assertEquals(50 + 70, spendingList1.calculateTotal());
         spendingList1.addSpending(100, "book", "2022-02-07");
         assertEquals(50 + 70 + 100, spendingList1.calculateTotal());
+        assertEquals(3, spendingList1.getListOfSpending().size());
+
     }
 }
