@@ -38,6 +38,10 @@ class SpendingTest {
         spendingList1.addSpending(100, "book", "2022-02-07");
         assertEquals(50 + 70 + 100, spendingList1.calculateTotal());
         assertEquals(3, spendingList1.getListOfSpending().size());
+    }
 
+    @Test
+    void toStringTest() {
+        assertEquals("Spending{amount=100.0, category='food', date='2022-02-04'}", spending1.toString());
     }
 }

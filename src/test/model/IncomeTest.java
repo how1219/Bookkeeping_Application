@@ -19,7 +19,7 @@ public class IncomeTest {
 
     @Test
     void testIncomeConstructor() {
-        assertEquals(100, income1.getAmount());
+        assertEquals(10000, income1.getAmount());
         assertEquals("2022-02-04", income1.getDate());
     }
 
@@ -43,5 +43,10 @@ public class IncomeTest {
     @Test
     void getDateTest() {
         assertEquals("2022-02-04", income1.getDate());
+    }
+
+    @Test
+    void toStringTest() {
+        assertEquals("Income{amount=10000.0, date='2022-02-04'}", income1.toString());
     }
 }
