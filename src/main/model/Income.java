@@ -24,6 +24,7 @@ public class Income {
     }
 
     @Override
+    // MODIFIES: this
     // Effects: print the income list in terms of string
     public String toString() {
         return "Income{"

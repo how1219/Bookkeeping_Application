@@ -30,7 +30,7 @@ mistake has been made.
 
 The reason I am interested in this project is that I feel I am in need of such an app to record and summarize 
 my financial activities. For me I spend different amounts every day on different things (food, clothes, books, etc. 
-all cost money). I also have a part-time job, so I have regular income. I wish I could design an app to log them, so 
+all cost money). I also have a part-time job, so I have a regular income. I wish I could design an app to log them, so 
 I can figure out if I've saved up, and remind me if I need to change my lifestyle? Spending a little at a time doesn't 
 get my attention, but summing them up will reveal whether I need to cut back.
 

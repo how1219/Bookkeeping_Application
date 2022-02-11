@@ -15,7 +15,7 @@ public class IncomeList {
 
     // REQUIRES: only one income is added each time
     // MODIFIES: this
-    // EFFECTS: add income to income list
+    // EFFECTS: add an income to the income list
     public void addIncome(double amountIncome, String date) {
         Income income = new Income(amountIncome, date);
         listOfIncomes.add(income);
@@ -23,7 +23,7 @@ public class IncomeList {
 
     // REQUIRES: only one income is removed each time
     // MODIFIES: this
-    // EFFECTS: remove income from income list
+    // EFFECTS: remove an income from the income list
     public List<Income> removeIncome(int removeIndex) {
         listOfIncomes.remove(removeIndex);
         return listOfIncomes;

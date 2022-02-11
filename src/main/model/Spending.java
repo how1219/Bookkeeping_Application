@@ -2,9 +2,9 @@ package model;
 
 // Represents a spending with amount, category, and date.
 public class Spending {
-    private double amount;
-    private String category;
-    private String date;
+    private final double amount;
+    private final String category;
+    private final String date;
 
     // Construct a spending
     // EFFECTS: set the amount to spendingAmount; set the category to spendingCategory;
@@ -32,6 +32,7 @@ public class Spending {
     }
 
     @Override
+    // MODIFIES: this
     // Effects: print the spending list in terms of string
     public String toString() {
         return "Spending{"

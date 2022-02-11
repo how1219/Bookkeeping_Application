@@ -7,8 +7,7 @@ import java.util.List;
 // Represents a list of spending
 public class SpendingList {
 
-    private List<Spending> listOfSpending;
-    private double value = 0;
+    private final List<Spending> listOfSpending;
 
     // Construct a spending list
     public SpendingList() {
@@ -17,7 +16,7 @@ public class SpendingList {
 
     // REQUIRES: only one spending is added each time
     // MODIFIES: this
-    // EFFECTS: add spending to spending list
+    // EFFECTS: add a spending to the spending list
     public void addSpending(double amountSpent, String category, String date) {
         Spending spending = new Spending(amountSpent, category, date);
         listOfSpending.add(spending);
@@ -25,7 +24,7 @@ public class SpendingList {
 
     // REQUIRES: only one spending is removed each time
     // MODIFIES: this
-    // EFFECTS: remove spending from spending list
+    // EFFECTS: remove a spending from the spending list
     public List<Spending> removeSpending(int removeIndex) {
         listOfSpending.remove(removeIndex);
         return listOfSpending;
@@ -37,7 +36,7 @@ public class SpendingList {
     //         If the list is empty, return 0
     public double calculateTotal() {
         if (listOfSpending.size() != 0) {
-            value = 0;
+            double value = 0;
             for (Spending spending: listOfSpending) {
                 value += spending.getAmount();
             }

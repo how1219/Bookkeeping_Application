@@ -39,6 +39,7 @@ public class UserInterface {
         }
     }
 
+    // EFFECTS: display user options
     private void displayMenu() {
         System.out.println();
         System.out.println("\t***** Please select: *****");
@@ -52,7 +53,7 @@ public class UserInterface {
     }
 
     // MODIFIES: this
-    // EFFECTS: read user selected
+    // EFFECTS: read user selected, and serve their need. If the given int is not 1, 2, 3, 4, 5, or 6, return "invalid".
     private void readSelected(int command) {
         if (command == 1) {
             addSpending();
@@ -76,7 +77,7 @@ public class UserInterface {
 
     // REQUIRES: spending amount >= 0
     // MODIFIES: this
-    // EFFECTS: add a spending to a spending list
+    // EFFECTS: add a spending to a spending list, then offer additional options for the user
     private void addSpending() {
 
         System.out.print("Enter amount spent: $");
@@ -105,7 +106,7 @@ public class UserInterface {
     }
 
     // MODIFIES: this
-    // EFFECTS: return the spending list, total spending amount, and delete a spending from the list
+    // EFFECTS: return the spending list, total spending amount, or delete a spending from the list
     private void spendingMore() {
         String commandString;
 
@@ -135,7 +136,7 @@ public class UserInterface {
 
     // REQUIRES: income amount >= 0
     // MODIFIES: this
-    // EFFECTS: add an income to an income list
+    // EFFECTS: add an income to an income list, then offer additional options for the user
     private void addIncome() {
         System.out.println("Enter income amount: $");
         double amountEntered = scn1.nextDouble();
@@ -160,7 +161,7 @@ public class UserInterface {
     }
 
     // MODIFIES: this
-    // EFFECTS: return the income list, total income amount, and delete an income from the list
+    // EFFECTS: return the income list, total income amount, or delete an income from the list
     private void incomeMore() {
         String commandString;
 
