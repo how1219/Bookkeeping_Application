@@ -43,4 +43,6 @@ get my attention, but summing them up will reveal whether I need to cut back.
 - As a user, I want to be able to calculate my total spending and income amount.
 - As a user, I want to be able to categorize my spending.
 - As a user, I want to be able to display the date.
+- As a user, I want to be able to save my spending and income list.
+- As a user, I want to be able to load my saved spending and income list from file.
  
