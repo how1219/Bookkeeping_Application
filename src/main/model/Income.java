@@ -1,7 +1,10 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 // // Represents an income with amount and date.
-public class Income {
+public class Income implements Writable {
     private double amount;
     private String date;
 
@@ -29,5 +32,14 @@ public class Income {
     public String toString() {
         return "Income{"
                 + "amount=" + amount + ", date='" + date + '\'' + '}';
+    }
+
+    @Override
+    public JSONObject toJson() {
+
+        JSONObject json = new JSONObject();
+        json.put("amount", amount);
+        json.put("date", date);
+        return json;
     }
 }

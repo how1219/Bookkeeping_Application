@@ -61,7 +61,7 @@ public class SpendingList implements Writable {
         return json;
     }
 
-    // EFFECTS: returns things in this workroom as a JSON array
+    // EFFECTS: returns spending in this spending list as a JSON array
     private JSONArray spendingToJson() {
         JSONArray jsonArray = new JSONArray();
 

@@ -1,10 +1,14 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.List;
 
 // Represents a list of incomes
-public class IncomeList {
+public class IncomeList implements Writable {
     private List<Income> listOfIncomes;
     private double value = 0;
 
@@ -46,5 +50,24 @@ public class IncomeList {
     // EFFECTS: return the income list
     public List<Income> getListOfIncomes() {
         return listOfIncomes;
+    }
+
+    @Override
+    public JSONObject toJson() {
+
+        JSONObject json = new JSONObject();
+        json.put("income", incomeToJson());
+        return json;
+    }
+
+    // EFFECTS: returns incomes in this income list as a JSON array
+    private JSONArray incomeToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Income i : listOfIncomes) {
+            jsonArray.put(i.toJson());
+        }
+
+        return jsonArray;
     }
 }
