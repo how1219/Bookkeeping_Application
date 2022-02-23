@@ -49,6 +49,10 @@ public class UserInterface {
         System.out.println("\t 4 -> <calculate total spending amount>");
         System.out.println("\t 5 -> <show my income list>");
         System.out.println("\t 6 -> <calculate total income amount>");
+        System.out.println("\t 11 -> save spending list to file");
+        System.out.println("\t 22 -> load spending list from file");
+        System.out.println("\t 33 -> save income list to file");
+        System.out.println("\t 44 -> load income list from file");
         System.out.println("\t 0 -> ** quit **");
     }
 
@@ -69,6 +73,14 @@ public class UserInterface {
             System.out.println(incomeList1.getListOfIncomes());
         }  else if (command == 6) {
             System.out.println("Your total income amount so far is $" + incomeList1.calculateTotal());
+        } else if (command == 11) {
+            saveSpendingList();
+        } else  if (command == 22) {
+            loadSpendingList();
+        } else if (command == 33) {
+            saveIncomeList();
+        } else  if (command == 44) {
+            loadIncomeList();
         } else {
             System.out.println("invalid");
         }
@@ -188,4 +200,23 @@ public class UserInterface {
                 break;
         }
     }
+
+    private void saveSpendingList() {
+
+    }
+
+    private void loadSpendingList() {
+
+    }
+
+    private void saveIncomeList() {
+
+    }
+
+    private void loadIncomeList() {
+
+    }
+
+
+
 }

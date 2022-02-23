@@ -1,11 +1,15 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.List;
 
 
 // Represents a list of spending
-public class SpendingList {
+public class SpendingList implements Writable {
 
     private final List<Spending> listOfSpending;
 
@@ -48,5 +52,23 @@ public class SpendingList {
     // EFFECTS: return the spending list
     public List<Spending> getListOfSpending() {
         return listOfSpending;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("spending", spendingToJson());
+        return json;
+    }
+
+    // EFFECTS: returns things in this workroom as a JSON array
+    private JSONArray spendingToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Spending s : listOfSpending) {
+            jsonArray.put(s.toJson());
+        }
+
+        return jsonArray;
     }
 }

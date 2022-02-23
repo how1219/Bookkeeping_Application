@@ -1,7 +1,10 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 // Represents a spending with amount, category, and date.
-public class Spending {
+public class Spending implements Writable {
     private final double amount;
     private final String category;
     private final String date;
@@ -37,5 +40,14 @@ public class Spending {
     public String toString() {
         return "Spending{"
                 + "amount=" + amount + ", category='" + category + '\'' + ", date='" + date + '\'' + '}';
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("amount", amount);
+        json.put("category", category);
+        json.put("date", date);
+        return json;
     }
 }
