@@ -11,6 +11,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
+// The main structure is referenced from the sample project provided
+
 // Represents a reader that reads the spending list from JSON data stored in file
 public class JsonReaderSpending {
     private final String source;

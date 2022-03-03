@@ -5,8 +5,8 @@ import persistence.Writable;
 
 // // Represents an income with amount and date.
 public class Income implements Writable {
-    private double amount;
-    private String date;
+    private final double amount;
+    private final String date;
 
     // Construct an income
     // EFFECTS: set the amount to incomeAmount; set the date to incomeDate
@@ -28,7 +28,7 @@ public class Income implements Writable {
 
     @Override
     // MODIFIES: this
-    // Effects: print the income list in terms of string
+    // EFFECTS: print the income list in terms of string
     public String toString() {
         return "Income{"
                 + "amount=" + amount + ", date='" + date + '\'' + '}';

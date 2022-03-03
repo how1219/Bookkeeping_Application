@@ -1,19 +1,19 @@
 package persistence;
 
 import model.IncomeList;
-import model.SpendingList;
 import org.json.JSONObject;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
-// Represents a writer that writes JSON representation of spending list to file
+// The main structure is referenced from the sample project provided
+
+// Represents a writer that writes JSON representation of income list to file
 public class JsonWriterIncome {
 
     private static final int TAB = 4;
     private PrintWriter writer;
-    private String destination;
+    private final String destination;
 
     // EFFECTS: constructs writer to write to destination file
     public JsonWriterIncome(String destination) {
@@ -24,11 +24,11 @@ public class JsonWriterIncome {
     // EFFECTS: opens writer; throws FileNotFoundException if destination file cannot
     // be opened for writing
     public void open() throws FileNotFoundException {
-        writer = new PrintWriter(new File(destination));
+        writer = new PrintWriter(destination);
     }
 
     // MODIFIES: this
-    // EFFECTS: writes JSON representation of spending list to file
+    // EFFECTS: writes JSON representation of income list to file
     public void write(IncomeList il) {
         JSONObject json = il.toJson();
         saveToFile(json.toString(TAB));

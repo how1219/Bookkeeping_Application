@@ -9,8 +9,7 @@ import java.util.List;
 
 // Represents a list of incomes
 public class IncomeList implements Writable {
-    private List<Income> listOfIncomes;
-    private double value = 0;
+    private final List<Income> listOfIncomes;
 
     // Construct an income list
     public IncomeList() {
@@ -37,7 +36,7 @@ public class IncomeList implements Writable {
     // EFFECT: calculate the total income amount in the income list
     //         If the list is empty, return 0
     public double calculateTotal() {
-        value = 0;
+        double value = 0;
         if (listOfIncomes.size() != 0) {
             for (Income income: listOfIncomes) {
                 value += income.getAmount();

@@ -1,7 +1,6 @@
 package persistence;
 
 import model.IncomeList;
-import model.SpendingList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -11,7 +10,9 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
-// Represents a reader that reads the spending list from JSON data stored in file
+// The main structure is referenced from the sample project provided
+
+// Represents a reader that reads the income list from JSON data stored in file
 public class JsonReaderIncome {
     private final String source;
 
@@ -47,7 +48,7 @@ public class JsonReaderIncome {
     }
 
     // MODIFIES: il
-    // EFFECTS: parses incomes from JSON object and adds them to spending list
+    // EFFECTS: parses incomes from JSON object and adds them to income list
     private void addIncomes(IncomeList il, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("income");
         for (Object json : jsonArray) {
