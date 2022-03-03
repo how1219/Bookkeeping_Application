@@ -5,6 +5,7 @@ import org.json.JSONObject;
 import persistence.Writable;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 // Represents a list of incomes
@@ -48,7 +49,7 @@ public class IncomeList implements Writable {
 
     // EFFECTS: return the income list
     public List<Income> getListOfIncomes() {
-        return listOfIncomes;
+        return  Collections.unmodifiableList(listOfIncomes);
     }
 
     @Override

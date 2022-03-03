@@ -1,6 +1,5 @@
 package persistence;
 
-import model.Spending;
 import model.SpendingList;
 import org.json.JSONArray;
 import org.json.JSONObject;

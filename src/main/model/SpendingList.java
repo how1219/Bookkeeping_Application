@@ -5,6 +5,7 @@ import org.json.JSONObject;
 import persistence.Writable;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -51,7 +52,7 @@ public class SpendingList implements Writable {
 
     // EFFECTS: return the spending list
     public List<Spending> getListOfSpending() {
-        return listOfSpending;
+        return Collections.unmodifiableList(listOfSpending);
     }
 
     @Override

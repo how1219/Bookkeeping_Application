@@ -61,14 +61,14 @@ public class UserInterface {
         System.out.println("\t***** Please select: *****");
         System.out.println("SPENDING");
         System.out.println("\t 1 -> ** add a spending **");
-        System.out.println("\t 2 -> <calculate total spending amount>");
-        System.out.println("\t 3 -> save spending list to file");
-        System.out.println("\t 4 -> load spending list from file");
+        System.out.println("\t 2 -> <show my spending list>");
+        System.out.println("\t 3 -> <save spending list to file>");
+        System.out.println("\t 4 -> <load spending list from file>");
         System.out.println("INCOME");
         System.out.println("\t 5 -> ** add an income **");
-        System.out.println("\t 6 -> <calculate total income amount>");
-        System.out.println("\t 7 -> save income list to file");
-        System.out.println("\t 8 -> load income list from file");
+        System.out.println("\t 6 -> <show my income list>");
+        System.out.println("\t 7 -> <save income list to file>");
+        System.out.println("\t 8 -> <load income list from file>");
         System.out.println();
         System.out.println("\t 0 -> ** quit **");
     }
@@ -80,7 +80,8 @@ public class UserInterface {
         if (command == 1) {
             addSpending();
         } else if (command == 2) {
-            System.out.println("Your total spending amount so far is $" + spendingList1.calculateTotal());
+            System.out.println("Your spending list: ");
+            System.out.println(spendingList1.getListOfSpending());
         } else if (command == 3) {
             saveSpendingList();
         } else if (command == 4) {
@@ -88,7 +89,8 @@ public class UserInterface {
         } else if (command == 5) {
             addIncome();
         }  else if (command == 6) {
-            System.out.println("Your total income amount so far is $" + incomeList1.calculateTotal());
+            System.out.println("Your income list: ");
+            System.out.println(incomeList1.getListOfIncomes());
         } else if (command == 7) {
             saveIncomeList();
         } else  if (command == 8) {
