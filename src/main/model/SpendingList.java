@@ -56,6 +56,8 @@ public class SpendingList implements Writable {
     }
 
     @Override
+    // MODIFIES: this
+    // EFFECTS: make a Json Object with spending
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("spending", spendingToJson());

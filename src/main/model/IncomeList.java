@@ -53,6 +53,8 @@ public class IncomeList implements Writable {
     }
 
     @Override
+    // MODIFIES: this
+    // EFFECTS: make a Json Object with income
     public JSONObject toJson() {
 
         JSONObject json = new JSONObject();

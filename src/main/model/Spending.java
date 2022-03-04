@@ -43,6 +43,8 @@ public class Spending implements Writable {
     }
 
     @Override
+    // MODIFIES: this
+    // EFFECTS: make a Json Object with amount, category and date
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("amount", amount);

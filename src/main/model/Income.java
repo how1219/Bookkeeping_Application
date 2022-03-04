@@ -35,6 +35,8 @@ public class Income implements Writable {
     }
 
     @Override
+    // MODIFIES: this
+    // EFFECTS: make a Json Object with amount and date
     public JSONObject toJson() {
 
         JSONObject json = new JSONObject();
