@@ -52,6 +52,8 @@ public class GUI implements ActionListener {
         frame.setTitle("Bookkeeping Application");
         frame.pack();
         frame.setVisible(true);
+
+
     }
 
     public static void main(String[] args) {
