@@ -1,7 +1,5 @@
 package ui.gui;
 
-import ui.ListDemo;
-
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
