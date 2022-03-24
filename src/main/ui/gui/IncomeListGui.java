@@ -1,10 +1,9 @@
 package ui.gui;
 
-import model.Spending;
-import model.SpendingList;
-import persistence.JsonReaderSpending;
-import persistence.JsonWriterSpending;
-
+import model.Income;
+import model.IncomeList;
+import persistence.JsonReaderIncome;
+import persistence.JsonWriterIncome;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -12,34 +11,35 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-public class SpendingListGui extends JFrame {
-    private final JFrame frame = new JFrame("Spending List");
-    JButton spending = new JButton("Add Spending");
+public class IncomeListGui extends JFrame {
+    private final JFrame frame = new JFrame("Income List");
+
+    private  JList list;
+    private  DefaultListModel listModel = new DefaultListModel();
+
+    JButton income = new JButton("Add Income");
     JButton remove = new JButton("Remove");
     JButton save = new JButton("Save");
     JButton load = new JButton("Load");
-    JLabel label = new JLabel(" ");
+    JLabel label  = new JLabel(" ");
     JPanel buttonPane = new JPanel();
 
-    private final JList list;
-    private final DefaultListModel listModel = new DefaultListModel();
-
     double amount;
-    Spending spendingExample;
-    String askCategory;
+    Income incomeExample;
     String askDate;
-    SpendingList spendingList = new SpendingList();
+    IncomeList incomeList = new IncomeList();
 
-    private static final String JSON_STORE_SPENDING = "./data/spending.json";
-    private final JsonReaderSpending jsonReaderSpending = new JsonReaderSpending(JSON_STORE_SPENDING);
-    private final JsonWriterSpending jsonWriterSpending = new JsonWriterSpending(JSON_STORE_SPENDING);
 
-    // Construct a window for spending list
-    public SpendingListGui() {
+    private static final String JSON_STORE_INCOME = "./data/income.json";
+    private  JsonReaderIncome jsonReaderIncome = new JsonReaderIncome(JSON_STORE_INCOME);
+    private  JsonWriterIncome jsonWriterIncome = new JsonWriterIncome(JSON_STORE_INCOME);
+
+
+    // Construct a window for income list
+    public IncomeListGui() {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(600, 600);
         frame.setVisible(true);
-
 
         //Create the list and put it in a scroll pane.
         list = new JList(listModel);
@@ -51,8 +51,8 @@ public class SpendingListGui extends JFrame {
         //Create a panel that uses BoxLayout.
         buttonPane.setLayout(new BoxLayout(buttonPane, BoxLayout.LINE_AXIS));
         buttonPane.setBackground(Color.lightGray);
-        spending.addActionListener(new AddListener());
-        buttonPane.add(spending);
+        income.addActionListener(new AddListener());
+        buttonPane.add(income);
 
         remove.setActionCommand("Remove");
         remove.addActionListener(new RemoveListener());
@@ -73,7 +73,8 @@ public class SpendingListGui extends JFrame {
 
     // Create a RemoveListener
     class RemoveListener implements ActionListener {
-        // EFFECTS: remove selected spending, and update total spending amount
+
+        // EFFECTS: remove selected income, and update total income amount
         public void actionPerformed(ActionEvent e) {
             //This method can be called only if
             //there's a valid selection
@@ -81,9 +82,9 @@ public class SpendingListGui extends JFrame {
             int index = list.getSelectedIndex();
             listModel.remove(index);
 
-            spendingList.removeSpending(index);
+            incomeList.removeIncome(index);
 
-            label.setText("Your total spending so far is" + " " + "$" + (spendingList.calculateTotal()));
+            label.setText("Your total income so far is" + " " + "$" + (incomeList.calculateTotal()));
 
         }
     }
@@ -91,62 +92,57 @@ public class SpendingListGui extends JFrame {
     // Create a AddListener
     class AddListener implements ActionListener {
 
-        // EFFECTS: Ask spending amount, category and data and add them to the list
+        // EFFECTS: Ask income amount and data and add them to the list
         @Override
         public void actionPerformed(ActionEvent e) {
-            ImageIcon amountImage = new ImageIcon("./data/img_1.png");
             String askAmount = JOptionPane.showInputDialog(frame,
-                    "How much did you spend？", null);
-            askCategory = JOptionPane.showInputDialog(frame,
-                    "Enter spending category", null);
+                    "Enter your income amount ", null);
             askDate = JOptionPane.showInputDialog(frame,
                     "Enter Date(yyyy-mm-dd)", null);
 
             amount = Double.parseDouble(askAmount);
 
-            spendingExample = new Spending(amount, askCategory, askDate);
+            incomeExample = new Income(amount, askDate);
 
-            spendingList.addSpending(amount, askCategory, askDate);
+            incomeList.addIncome(amount, askDate);
 
-            listModel.addElement("Amount: $" + spendingExample.getAmount() + "  Category: "
-                    + spendingExample.getCategory() + "  Date: " + spendingExample.getDate());
+            listModel.addElement("Amount: $" + incomeExample.getAmount() + "  Date: " + incomeExample.getDate());
 
-            label.setText("Your total spending so far is" + " " + "$" + (spendingList.calculateTotal()));
+            label.setText("Your total income so far is" + " " + "$" + (incomeList.calculateTotal()));
         }
     }
-
 
     // Create a SaveListener
     class SaveListener implements ActionListener {
 
-        // EFFECTS: Save the spending list to file
+        // EFFECTS: Save the income list to file
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
-                jsonWriterSpending.open();
-                jsonWriterSpending.write(spendingList);
-                jsonWriterSpending.close();
-                System.out.println("Saved spending List to " + JSON_STORE_SPENDING);
+                jsonWriterIncome.open();
+                jsonWriterIncome.write(incomeList);
+                jsonWriterIncome.close();
+                System.out.println("Saved income List to " + JSON_STORE_INCOME);
             } catch (FileNotFoundException ee) {
-                System.out.println("Unable to write to file: " + JSON_STORE_SPENDING);
+                System.out.println("Unable to write to file: " + JSON_STORE_INCOME);
             }
 
         }
     }
 
-
     // Create a LoadListener
     class LoadListener implements ActionListener {
 
-        // EFFECTS: Load the spending list from file
+        // EFFECTS: Load the income list from file
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
-                spendingList = jsonReaderSpending.read();
-                System.out.println("Loaded spending list from " + JSON_STORE_SPENDING);
+                incomeList = jsonReaderIncome.read();
+                System.out.println("Loaded income list from " + JSON_STORE_INCOME);
             } catch (IOException ee) {
-                System.out.println("Unable to read from file: " + JSON_STORE_SPENDING);
+                System.out.println("Unable to read from file: " + JSON_STORE_INCOME);
             }
+
 
         }
     }

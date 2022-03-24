@@ -216,7 +216,7 @@ public class UserInterface {
     }
 
     // EFFECTS: saves the spending list to file
-    private void saveSpendingList() {
+    public void saveSpendingList() {
         try {
             jsonWriterSpending.open();
             jsonWriterSpending.write(spendingList1);

@@ -1,12 +1,5 @@
-{"spending": [
-    {
-        "date": "2022-03-08",
-        "amount": 1000,
-        "category": "food"
-    },
-    {
-        "date": "2003-11-26",
-        "amount": 2000,
-        "category": "book"
-    }
-]}
+{"spending": [{
+    "date": "2003-11-26",
+    "amount": 2003,
+    "category": "food"
+}]}
