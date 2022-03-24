@@ -2,6 +2,7 @@ package ui.gui;
 
 import model.Income;
 import model.IncomeList;
+import model.Spending;
 import persistence.JsonReaderIncome;
 import persistence.JsonWriterIncome;
 import javax.swing.*;
@@ -73,8 +74,8 @@ public class IncomeListGui extends JFrame implements ActionListener {
     }
 
     // EFFECTS: If the user pressed "Remove" button, remove selected income from the list.
-    // If the user pressed "Add Income" button, the ask amount and data, and add the new income to the income list.
-    // Otherwise, run actionPerformedMore()
+    // If the user pressed "Add Income" button, the ask amount and data, and add the new income to the income list,
+    // then update the label. Otherwise, run actionPerformedMore()
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Remove")) {
@@ -119,6 +120,11 @@ public class IncomeListGui extends JFrame implements ActionListener {
         } else if (e.getActionCommand().equals("Load")) {
             try {
                 incomeList = jsonReaderIncome.read();
+                for (int index = 0; index < incomeList.getListOfIncomes().size(); index++) {
+                    Income income1 = incomeList.getListOfIncomes().get(index);
+                    listModel.addElement("Amount: $" + income1.getAmount()
+                            + "  Date: " + income1.getDate());
+                }
                 System.out.println("Loaded income list from " + JSON_STORE_INCOME);
             } catch (IOException ee) {
                 System.out.println("Unable to read from file: " + JSON_STORE_INCOME);

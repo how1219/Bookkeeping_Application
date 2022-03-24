@@ -1,6 +1,5 @@
 package ui.gui;
 
-import model.Income;
 import model.Spending;
 import model.SpendingList;
 import persistence.JsonReaderSpending;
@@ -48,7 +47,6 @@ public class SpendingListGui extends JFrame implements ActionListener {
         JScrollPane listScrollPane = new JScrollPane(list);
 
         //Create a panel that uses BoxLayout.
-        // buttonPane.setLayout(new BoxLayout(buttonPane, BoxLayout.LINE_AXIS));
         buttonPane.setBackground(Color.lightGray);
         spending.setActionCommand("Add Spending");
         spending.addActionListener(this);
@@ -75,8 +73,7 @@ public class SpendingListGui extends JFrame implements ActionListener {
 
     // EFFECTS: If the user pressed "Remove" button, remove selected spending from the list.
     // If the user pressed "Add Spending" button, the ask amount, category,and data, then add the new income
-    // to the income list.
-    // Otherwise, run actionPerformedMore()
+    // to the income list, then update the label. Otherwise, run actionPerformedMore()
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Remove")) {
@@ -124,6 +121,12 @@ public class SpendingListGui extends JFrame implements ActionListener {
         } else if (e.getActionCommand().equals("Load")) {
             try {
                 spendingList = jsonReaderSpending.read();
+
+                for (int index = 0; index < spendingList.getListOfSpending().size(); index++) {
+                    Spending spending1 = spendingList.getListOfSpending().get(index);
+                    listModel.addElement("Amount: $" + spending1.getAmount() + "  Category: "
+                            + spending1.getCategory() + "  Date: " + spending1.getDate());
+                }
                 System.out.println("Loaded spending list from " + JSON_STORE_SPENDING);
             } catch (IOException ee) {
                 System.out.println("Unable to read from file: " + JSON_STORE_SPENDING);

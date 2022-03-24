@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AppGuiNew extends JFrame implements ActionListener {
+public class AppGui extends JFrame implements ActionListener {
     private final JFrame frame = new JFrame("Book-keeping Application");
 
     JButton spending = new JButton("Add Spending");
@@ -21,7 +21,7 @@ public class AppGuiNew extends JFrame implements ActionListener {
             .getScaledInstance(650, 440, Image.SCALE_DEFAULT));
 
     // Construct the basic layout of the main window
-    public AppGuiNew() {
+    public AppGui() {
         // generate frame
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(700, 700);
@@ -76,7 +76,7 @@ public class AppGuiNew extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        AppGuiNew myGUI = new AppGuiNew();
+        AppGui myGUI = new AppGui();
         myGUI.startGUI();
     }
 
