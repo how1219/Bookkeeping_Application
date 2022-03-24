@@ -1,5 +1,6 @@
 package ui.gui;
 
+import model.Income;
 import model.Spending;
 import model.SpendingList;
 import persistence.JsonReaderSpending;
@@ -12,7 +13,7 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-public class SpendingListGui extends JFrame {
+public class SpendingListGui extends JFrame implements ActionListener {
     private final JFrame frame = new JFrame("Spending List");
     JButton spending = new JButton("Add Spending");
     JButton remove = new JButton("Remove");
@@ -37,64 +38,51 @@ public class SpendingListGui extends JFrame {
     // Construct a window for spending list
     public SpendingListGui() {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(600, 600);
+        frame.setSize(700, 700);
         frame.setVisible(true);
 
 
         //Create the list and put it in a scroll pane.
         list = new JList<>(listModel);
         list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        list.setSelectedIndex(0);
-        list.setVisibleRowCount(5);
         JScrollPane listScrollPane = new JScrollPane(list);
 
         //Create a panel that uses BoxLayout.
-        buttonPane.setLayout(new BoxLayout(buttonPane, BoxLayout.LINE_AXIS));
+        // buttonPane.setLayout(new BoxLayout(buttonPane, BoxLayout.LINE_AXIS));
         buttonPane.setBackground(Color.lightGray);
-        spending.addActionListener(new AddListener());
+        spending.setActionCommand("Add Spending");
+        spending.addActionListener(this);
         buttonPane.add(spending);
 
         remove.setActionCommand("Remove");
-        remove.addActionListener(new RemoveListener());
+        remove.addActionListener(this);
         buttonPane.add(remove);
 
         label.setFont(new Font("Times New Roman", Font.BOLD, 16));
         buttonPane.add(label, BorderLayout.SOUTH);
 
         // Create save and load button
-        save.addActionListener(new SaveListener());
+        save.setActionCommand("Save");
+        save.addActionListener(this);
         buttonPane.add(save);
-        load.addActionListener(new LoadListener());
+        load.setActionCommand("Load");
+        load.addActionListener(this);
         buttonPane.add(load);
 
         frame.add(listScrollPane, BorderLayout.CENTER);
         frame.add(buttonPane, BorderLayout.PAGE_END);
     }
 
-    // Create a RemoveListener
-    class RemoveListener implements ActionListener {
-        // EFFECTS: remove selected spending, and update total spending amount
-        public void actionPerformed(ActionEvent e) {
-            //This method can be called only if
-            //there's a valid selection
-            //so go ahead and remove whatever's selected.
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getActionCommand().equals("Remove")) {
             int index = list.getSelectedIndex();
             listModel.remove(index);
 
             spendingList.removeSpending(index);
 
             label.setText("Your total spending so far is" + " " + "$" + (spendingList.calculateTotal()));
-
-        }
-    }
-
-    // Create a AddListener
-    class AddListener implements ActionListener {
-
-        // EFFECTS: Ask spending amount, category and data and add them to the list
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            //ImageIcon amountImage = new ImageIcon("./data/img_1.png");
+        } else if (e.getActionCommand().equals("Add Spending")) {
             String askAmount = JOptionPane.showInputDialog(frame,
                     "How much did you spend？", null);
             askCategory = JOptionPane.showInputDialog(frame,
@@ -112,16 +100,13 @@ public class SpendingListGui extends JFrame {
                     + spendingExample.getCategory() + "  Date: " + spendingExample.getDate());
 
             label.setText("Your total spending so far is" + " " + "$" + (spendingList.calculateTotal()));
+        } else {
+            actionPerformedMore(e);
         }
     }
 
-
-    // Create a SaveListener
-    class SaveListener implements ActionListener {
-
-        // EFFECTS: Save the spending list to file
-        @Override
-        public void actionPerformed(ActionEvent e) {
+    public void actionPerformedMore(ActionEvent e) {
+        if (e.getActionCommand().equals("Save")) {
             try {
                 jsonWriterSpending.open();
                 jsonWriterSpending.write(spendingList);
@@ -130,24 +115,14 @@ public class SpendingListGui extends JFrame {
             } catch (FileNotFoundException ee) {
                 System.out.println("Unable to write to file: " + JSON_STORE_SPENDING);
             }
-
-        }
-    }
-
-
-    // Create a LoadListener
-    class LoadListener implements ActionListener {
-
-        // EFFECTS: Load the spending list from file
-        @Override
-        public void actionPerformed(ActionEvent e) {
+        } else if (e.getActionCommand().equals("Load")) {
             try {
                 spendingList = jsonReaderSpending.read();
                 System.out.println("Loaded spending list from " + JSON_STORE_SPENDING);
             } catch (IOException ee) {
                 System.out.println("Unable to read from file: " + JSON_STORE_SPENDING);
             }
-
         }
     }
 }
+
