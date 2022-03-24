@@ -14,8 +14,8 @@ import java.io.IOException;
 public class IncomeListGui extends JFrame {
     private final JFrame frame = new JFrame("Income List");
 
-    private  JList list;
-    private  DefaultListModel listModel = new DefaultListModel();
+    private final JList<String> list;
+    private final DefaultListModel<String> listModel = new DefaultListModel<>();
 
     JButton income = new JButton("Add Income");
     JButton remove = new JButton("Remove");
@@ -31,8 +31,8 @@ public class IncomeListGui extends JFrame {
 
 
     private static final String JSON_STORE_INCOME = "./data/income.json";
-    private  JsonReaderIncome jsonReaderIncome = new JsonReaderIncome(JSON_STORE_INCOME);
-    private  JsonWriterIncome jsonWriterIncome = new JsonWriterIncome(JSON_STORE_INCOME);
+    private final JsonReaderIncome jsonReaderIncome = new JsonReaderIncome(JSON_STORE_INCOME);
+    private final JsonWriterIncome jsonWriterIncome = new JsonWriterIncome(JSON_STORE_INCOME);
 
 
     // Construct a window for income list
@@ -42,7 +42,7 @@ public class IncomeListGui extends JFrame {
         frame.setVisible(true);
 
         //Create the list and put it in a scroll pane.
-        list = new JList(listModel);
+        list = new JList<>(listModel);
         list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         list.setSelectedIndex(0);
         list.setVisibleRowCount(5);

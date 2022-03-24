@@ -21,8 +21,8 @@ public class SpendingListGui extends JFrame {
     JLabel label = new JLabel(" ");
     JPanel buttonPane = new JPanel();
 
-    private final JList list;
-    private final DefaultListModel listModel = new DefaultListModel();
+    private final JList<String> list;
+    private final DefaultListModel<String> listModel = new DefaultListModel<>();
 
     double amount;
     Spending spendingExample;
@@ -42,7 +42,7 @@ public class SpendingListGui extends JFrame {
 
 
         //Create the list and put it in a scroll pane.
-        list = new JList(listModel);
+        list = new JList<>(listModel);
         list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         list.setSelectedIndex(0);
         list.setVisibleRowCount(5);
@@ -94,7 +94,7 @@ public class SpendingListGui extends JFrame {
         // EFFECTS: Ask spending amount, category and data and add them to the list
         @Override
         public void actionPerformed(ActionEvent e) {
-            ImageIcon amountImage = new ImageIcon("./data/img_1.png");
+            //ImageIcon amountImage = new ImageIcon("./data/img_1.png");
             String askAmount = JOptionPane.showInputDialog(frame,
                     "How much did you spend？", null);
             askCategory = JOptionPane.showInputDialog(frame,
