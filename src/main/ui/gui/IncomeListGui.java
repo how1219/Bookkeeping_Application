@@ -72,6 +72,9 @@ public class IncomeListGui extends JFrame implements ActionListener {
         frame.add(buttonPane, BorderLayout.PAGE_END);
     }
 
+    // EFFECTS: If the user pressed "Remove" button, remove selected income from the list.
+    // If the user pressed "Add Income" button, the ask amount and data, and add the new income to the income list.
+    // Otherwise, run actionPerformedMore()
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Remove")) {
@@ -99,9 +102,10 @@ public class IncomeListGui extends JFrame implements ActionListener {
         } else {
             actionPerformedMore(e);
         }
-
     }
 
+    // EFFECTS: If the user pressed "Save" button, save the income list into file
+    // If the user pressed "Load" button, load the income list from file.
     public void actionPerformedMore(ActionEvent e) {
         if (e.getActionCommand().equals("Save")) {
             try {

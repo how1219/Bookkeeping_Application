@@ -73,6 +73,10 @@ public class SpendingListGui extends JFrame implements ActionListener {
         frame.add(buttonPane, BorderLayout.PAGE_END);
     }
 
+    // EFFECTS: If the user pressed "Remove" button, remove selected spending from the list.
+    // If the user pressed "Add Spending" button, the ask amount, category,and data, then add the new income
+    // to the income list.
+    // Otherwise, run actionPerformedMore()
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Remove")) {
@@ -105,6 +109,8 @@ public class SpendingListGui extends JFrame implements ActionListener {
         }
     }
 
+    // EFFECTS: If the user pressed "Save" button, save the spending list into file
+    // If the user pressed "Load" button, load the spending list from file.
     public void actionPerformedMore(ActionEvent e) {
         if (e.getActionCommand().equals("Save")) {
             try {

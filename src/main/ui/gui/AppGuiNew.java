@@ -41,6 +41,8 @@ public class AppGuiNew extends JFrame implements ActionListener {
         middlePanel.add(imgLabel);
 
         // create lower panel
+        spending.setActionCommand("Add Spending");
+        income.setActionCommand("Add Income");
         spending.addActionListener(this);
         income.addActionListener(this);
 
@@ -55,32 +57,17 @@ public class AppGuiNew extends JFrame implements ActionListener {
         frame.getContentPane().add(BorderLayout.SOUTH, lowerPanel);
         frame.getContentPane().add(BorderLayout.CENTER, middlePanel);
 
-        spending.addActionListener(new SpendingListener());
-        income.addActionListener(new IncomeListener());
     }
 
-    // Create a spending button listener
-    static class SpendingListener implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            new SpendingListGui();
-        }
-    }
-
-    // Create an income button listener
-    static class IncomeListener implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            new IncomeListGui();
-        }
-    }
-
-
+    // EFFECTS: if user pressed button "Add Spending", popup spending list window.
+    // If user pressed "Add Income", popup income list window
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        if (e.getActionCommand().equals("Add Spending")) {
+            new SpendingListGui();
+        } else if (e.getActionCommand().equals("Add Income")) {
+            new IncomeListGui();
+        }
     }
 
     // EFFECTS: start GUI
