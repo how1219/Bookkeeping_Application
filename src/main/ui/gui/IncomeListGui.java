@@ -77,8 +77,7 @@ public class IncomeListGui extends JFrame implements ActionListener {
     }
 
     // EFFECTS: If the user pressed "Remove" button, remove selected income from the list.
-    // If the user pressed "Add Income" button, the ask amount and data, and add the new income to the income list,
-    // then update the label. Otherwise, run actionPerformedMore()
+    // If the user pressed "Add Income" button, run actionPerformeDate(). Otherwise, run actionPerformedMore()
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Remove")) {
@@ -95,6 +94,7 @@ public class IncomeListGui extends JFrame implements ActionListener {
         }
     }
 
+    // EFFECTS: the ask amount and date, and add the new income to the income list, then update the label.
     public void actionPerformedDate() {
         String askAmount = JOptionPane.showInputDialog(frame,
                 "Enter your income amount ", null);

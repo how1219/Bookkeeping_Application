@@ -84,8 +84,7 @@ public class SpendingListGui extends JFrame implements ActionListener {
     }
 
     // EFFECTS: If the user pressed "Remove" button, remove selected spending from the list.
-    // If the user pressed "Add Spending" button, the ask amount, category,and data, then add the new income
-    // to the income list, then update the label. Otherwise, run actionPerformedMore()
+    // If the user pressed "Add Spending" button, run actionPerformedDate().  Otherwise, run actionPerformedMore()
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Remove")) {
@@ -102,6 +101,7 @@ public class SpendingListGui extends JFrame implements ActionListener {
         }
     }
 
+    // EFFECTS: the ask amount, category and date, and add the new spending to the spending list, then update the label.
     public void actionPerformedDate() {
         String askAmount = JOptionPane.showInputDialog(frame,
                 "How much did you spend？", "Amount", JOptionPane.QUESTION_MESSAGE);
