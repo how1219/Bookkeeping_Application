@@ -2,7 +2,6 @@ package ui.gui;
 
 import model.Income;
 import model.IncomeList;
-import model.Spending;
 import persistence.JsonReaderIncome;
 import persistence.JsonWriterIncome;
 import javax.swing.*;
@@ -34,6 +33,10 @@ public class IncomeListGui extends JFrame implements ActionListener {
     private static final String JSON_STORE_INCOME = "./data/income.json";
     private final JsonReaderIncome jsonReaderIncome = new JsonReaderIncome(JSON_STORE_INCOME);
     private final JsonWriterIncome jsonWriterIncome = new JsonWriterIncome(JSON_STORE_INCOME);
+
+    //https://www.swhealth.org/wp-content/uploads/2018/01/Calendar-Icon.jpg
+    ImageIcon dateImage = new ImageIcon(new ImageIcon("./data/date.png").getImage()
+            .getScaledInstance(100, 100, Image.SCALE_DEFAULT));
 
 
     // Construct a window for income list
@@ -86,23 +89,41 @@ public class IncomeListGui extends JFrame implements ActionListener {
 
             label.setText("Your total income so far is" + " " + "$" + (incomeList.calculateTotal()));
         } else if (e.getActionCommand().equals("Add Income")) {
-            String askAmount = JOptionPane.showInputDialog(frame,
-                    "Enter your income amount ", null);
-            askDate = JOptionPane.showInputDialog(frame,
-                    "Enter Date(yyyy-mm-dd)", null);
-
-            amount = Double.parseDouble(askAmount);
-
-            incomeExample = new Income(amount, askDate);
-
-            incomeList.addIncome(amount, askDate);
-
-            listModel.addElement("Amount: $" + incomeExample.getAmount() + "  Date: " + incomeExample.getDate());
-
-            label.setText("Your total income so far is" + " " + "$" + (incomeList.calculateTotal()));
+            actionPerformedDate();
         } else {
             actionPerformedMore(e);
         }
+    }
+
+    public void actionPerformedDate() {
+        String askAmount = JOptionPane.showInputDialog(frame,
+                "Enter your income amount ", null);
+        String[] optionsYear = {"2022", "2021", "2020","2019"};
+        String year = (String)JOptionPane.showInputDialog(frame,
+                "Year", "Date",
+                JOptionPane.QUESTION_MESSAGE, dateImage, optionsYear, optionsYear[0]);
+        String[] optionsMonth = {"January", "February", "March", "April", "May", "June", "July", "August",
+                "September", "October", "November", "December"};
+        String month = (String)JOptionPane.showInputDialog(frame,
+                "Month", "Date",
+                JOptionPane.QUESTION_MESSAGE, dateImage, optionsMonth, optionsMonth[0]);
+        String[] optionsDay = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15",
+                "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"};
+        String day = (String)JOptionPane.showInputDialog(frame,
+                "day", "Date",
+                JOptionPane.QUESTION_MESSAGE, dateImage, optionsDay, optionsDay[0]);
+
+        askDate = year + "-" + month + "-" + day;
+
+        amount = Double.parseDouble(askAmount);
+
+        incomeExample = new Income(amount, askDate);
+
+        incomeList.addIncome(amount, askDate);
+
+        listModel.addElement("Amount: $" + incomeExample.getAmount() + "  Date: " + incomeExample.getDate());
+
+        label.setText("Your total income so far is" + " " + "$" + (incomeList.calculateTotal()));
     }
 
     // EFFECTS: If the user pressed "Save" button, save the income list into file

@@ -17,6 +17,7 @@ public class AppGui extends JFrame implements ActionListener {
     JPanel middlePanel = new JPanel();
     JPanel lowerPanel = new JPanel();
 
+   // https://cdn3.vectorstock.com/i/1000x1000/43/87/door-hanging-sign-welcome-on-white-background-vector-31114387.jpg
     ImageIcon imageIcon = new ImageIcon(new ImageIcon("./data/img2.png").getImage()
             .getScaledInstance(650, 440, Image.SCALE_DEFAULT));
 

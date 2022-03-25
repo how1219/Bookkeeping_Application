@@ -34,6 +34,18 @@ public class SpendingListGui extends JFrame implements ActionListener {
     private final JsonReaderSpending jsonReaderSpending = new JsonReaderSpending(JSON_STORE_SPENDING);
     private final JsonWriterSpending jsonWriterSpending = new JsonWriterSpending(JSON_STORE_SPENDING);
 
+    // https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1500w,f_auto,q_auto:best/newscms/2019_06
+    // /2746941/190208-stock-money-fanned-out-ew-317p.jpg
+    ImageIcon categoryImage = new ImageIcon(new ImageIcon("./data/img_2.png").getImage()
+            .getScaledInstance(300, 230, Image.SCALE_DEFAULT));
+    //https://www.swhealth.org/wp-content/uploads/2018/01/Calendar-Icon.jpg
+    ImageIcon dateImage = new ImageIcon(new ImageIcon("./data/date.png").getImage()
+            .getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+    String[] options = {"Food and Groceries","Clothing", "Transportation", "Housing", "Debt Payoff", "Other"};
+    String[] optionsYear = {"2022", "2021", "2020","2019"};
+    String[] optionsDay = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15",
+            "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"};
+
     // Construct a window for spending list
     public SpendingListGui() {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -84,26 +96,41 @@ public class SpendingListGui extends JFrame implements ActionListener {
 
             label.setText("Your total spending so far is" + " " + "$" + (spendingList.calculateTotal()));
         } else if (e.getActionCommand().equals("Add Spending")) {
-            String askAmount = JOptionPane.showInputDialog(frame,
-                    "How much did you spend？", null);
-            askCategory = JOptionPane.showInputDialog(frame,
-                    "Enter spending category", null);
-            askDate = JOptionPane.showInputDialog(frame,
-                    "Enter Date(yyyy-mm-dd)", null);
-
-            amount = Double.parseDouble(askAmount);
-
-            spendingExample = new Spending(amount, askCategory, askDate);
-
-            spendingList.addSpending(amount, askCategory, askDate);
-
-            listModel.addElement("Amount: $" + spendingExample.getAmount() + "  Category: "
-                    + spendingExample.getCategory() + "  Date: " + spendingExample.getDate());
-
-            label.setText("Your total spending so far is" + " " + "$" + (spendingList.calculateTotal()));
+            actionPerformedDate();
         } else {
             actionPerformedMore(e);
         }
+    }
+
+    public void actionPerformedDate() {
+        String askAmount = JOptionPane.showInputDialog(frame,
+                "How much did you spend？", "Amount", JOptionPane.QUESTION_MESSAGE);
+
+        askCategory = (String)JOptionPane.showInputDialog(frame,
+                "Choose spending category", "Category",
+                JOptionPane.QUESTION_MESSAGE, categoryImage, options, options[0]);
+
+        String year = (String)JOptionPane.showInputDialog(frame,
+                "Year", "Date", JOptionPane.QUESTION_MESSAGE, dateImage, optionsYear, optionsYear[0]);
+        String[] optionsMonth = {"January", "February", "March", "April", "May", "June", "July", "August",
+                "September", "October", "November", "December"};
+        String month = (String)JOptionPane.showInputDialog(frame,
+                "Month", "Date", JOptionPane.QUESTION_MESSAGE, dateImage, optionsMonth, optionsMonth[0]);
+        String day = (String)JOptionPane.showInputDialog(frame,
+                "day", "Date", JOptionPane.QUESTION_MESSAGE, dateImage, optionsDay, optionsDay[0]);
+
+        askDate = year + "-" + month + "-" + day;
+        amount = Double.parseDouble(askAmount);
+
+        spendingExample = new Spending(amount, askCategory, askDate);
+
+        spendingList.addSpending(amount, askCategory, askDate);
+
+        listModel.addElement("Amount: $" + spendingExample.getAmount() + "  Category: "
+                + spendingExample.getCategory() + "  Date: " + spendingExample.getDate());
+
+        label.setText("Your total spending so far is" + " " + "$" + (spendingList.calculateTotal()));
+
     }
 
     // EFFECTS: If the user pressed "Save" button, save the spending list into file
