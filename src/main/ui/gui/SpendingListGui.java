@@ -48,7 +48,7 @@ public class SpendingListGui extends JFrame implements ActionListener {
     String[] optionsDay = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15",
             "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"};
 
-    private LogPrinter lp = new LogPrinter();
+    private final LogPrinter lp = new LogPrinter();
 
     // Construct a window for spending list
     public SpendingListGui() {
@@ -72,8 +72,7 @@ public class SpendingListGui extends JFrame implements ActionListener {
         remove.addActionListener(this);
         buttonPane.add(remove);
 
-        label.setFont(new Font("Times New Roman", Font.BOLD, 16));
-        buttonPane.add(label, BorderLayout.SOUTH);
+        setLabel();
 
         // Create save and load button
         save.setActionCommand("Save");
@@ -86,6 +85,11 @@ public class SpendingListGui extends JFrame implements ActionListener {
         frame.add(listScrollPane, BorderLayout.CENTER);
         frame.add(buttonPane, BorderLayout.PAGE_END);
 
+        closing();
+    }
+
+    // EFFECTS: confirm the user want to close the window. Is yes, print all log events.
+    public void closing() {
         frame.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent windowEvent) {
@@ -98,6 +102,12 @@ public class SpendingListGui extends JFrame implements ActionListener {
                 }
             }
         });
+    }
+
+    // EFFECTS: set label format and size
+    public void setLabel() {
+        label.setFont(new Font("Times New Roman", Font.BOLD, 16));
+        buttonPane.add(label, BorderLayout.SOUTH);
     }
 
     // EFFECTS: If the user pressed "Remove" button, remove selected spending from the list.

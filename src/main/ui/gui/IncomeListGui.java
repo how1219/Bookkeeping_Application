@@ -41,7 +41,7 @@ public class IncomeListGui extends JFrame implements ActionListener {
     ImageIcon dateImage = new ImageIcon(new ImageIcon("./data/date.png").getImage()
             .getScaledInstance(100, 100, Image.SCALE_DEFAULT));
 
-    private LogPrinter lp = new LogPrinter();
+    private final LogPrinter lp = new LogPrinter();
 
 
     // Construct a window for income list
@@ -66,8 +66,7 @@ public class IncomeListGui extends JFrame implements ActionListener {
         remove.addActionListener(this);
         buttonPane.add(remove);
 
-        label.setFont(new Font("Times New Roman", Font.BOLD, 16));
-        buttonPane.add(label, BorderLayout.SOUTH);
+        setLabel();
 
         // Create save and load button
         save.setActionCommand("Save");
@@ -80,6 +79,11 @@ public class IncomeListGui extends JFrame implements ActionListener {
         frame.add(listScrollPane, BorderLayout.CENTER);
         frame.add(buttonPane, BorderLayout.PAGE_END);
 
+        closing();
+    }
+
+    // EFFECTS: confirm the user want to close the window. Is yes, print all log events.
+    public void closing() {
         frame.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent windowEvent) {
@@ -92,6 +96,12 @@ public class IncomeListGui extends JFrame implements ActionListener {
                 }
             }
         });
+    }
+
+    // EFFECTS: set label format and size
+    public void setLabel() {
+        label.setFont(new Font("Times New Roman", Font.BOLD, 16));
+        buttonPane.add(label, BorderLayout.SOUTH);
     }
 
     // EFFECTS: If the user pressed "Remove" button, remove selected income from the list.
