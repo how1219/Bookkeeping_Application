@@ -45,4 +45,17 @@ get my attention, but summing them up will reveal whether I need to cut back.
 - As a user, I want to be able to display the date.
 - As a user, I want to be able to save my spending and income list.
 - As a user, I want to be able to load my saved spending and income list from file.
- 
+
+## Phase 4: Task 2
+Mon Mar 28 22:23:56 PDT 2022\
+Added spending: Spending{amount=100.0, category='Food and Groceries', date='2022-March-28'}\
+Mon Mar 28 22:24:26 PDT 2022\
+Added spending: Spending{amount=90.0, category='Transportation', date='2022-March-29'}\
+Mon Mar 28 22:24:34 PDT 2022\
+Removed spending: Spending{amount=90.0, category='Transportation', date='2022-March-29'}\
+Mon Mar 28 22:24:50 PDT 2022\
+Added income: Income{amount=5000.0, date='2022-January-29'}\
+Mon Mar 28 22:25:05 PDT 2022\
+Added income: Income{amount=9000.0, date='2022-March-28'}\
+Mon Mar 28 22:25:08 PDT 2022\
+Removed income: Income{amount=5000.0, date='2022-January-29'}\

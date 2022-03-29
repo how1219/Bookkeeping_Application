@@ -1,5 +1,7 @@
 package ui;
 
+import model.Event;
+import model.EventLog;
 import model.IncomeList;
 import model.SpendingList;
 import persistence.JsonReaderIncome;
@@ -21,6 +23,8 @@ public class UserInterface {
     private final JsonWriterSpending jsonWriterSpending;
     private final JsonReaderIncome jsonReaderIncome;
     private final JsonWriterIncome jsonWriterIncome;
+
+    private LogPrinter lp = new LogPrinter();
 
     // Start the Bookkeeping application
     public UserInterface() {
@@ -49,11 +53,19 @@ public class UserInterface {
 
             if (command == 0) {
                 ifFlag = false;
+                lp.printLog(EventLog.getInstance());
             } else {
                 readSelected(command);
             }
         }
     }
+
+//    public void printLog(EventLog el) {
+//        for (Event next : el) {
+//            System.out.println(next.toString());
+//        }
+//
+//    }
 
     // EFFECTS: display user options
     private void displayMenu() {

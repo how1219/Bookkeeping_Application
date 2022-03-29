@@ -1,12 +1,5 @@
-{"spending": [
-    {
-        "date": "2022-January-4",
-        "amount": 1000,
-        "category": "Debt Payoff"
-    },
-    {
-        "date": "2022-January-1",
-        "amount": 400,
-        "category": "Food and Groceries"
-    }
-]}
+{"spending": [{
+    "date": "2022-January-1",
+    "amount": 1000,
+    "category": "Food and Groceries"
+}]}

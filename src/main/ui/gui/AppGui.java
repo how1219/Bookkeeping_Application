@@ -1,9 +1,13 @@
 package ui.gui;
 
+import model.EventLog;
+import ui.LogPrinter;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 
 public class AppGui extends JFrame implements ActionListener {
     private final JFrame frame = new JFrame("Book-keeping Application");
@@ -20,6 +24,8 @@ public class AppGui extends JFrame implements ActionListener {
    // https://cdn3.vectorstock.com/i/1000x1000/43/87/door-hanging-sign-welcome-on-white-background-vector-31114387.jpg
     ImageIcon imageIcon = new ImageIcon(new ImageIcon("./data/img2.png").getImage()
             .getScaledInstance(650, 440, Image.SCALE_DEFAULT));
+
+    private LogPrinter lp = new LogPrinter();
 
     // Construct the basic layout of the main window
     public AppGui() {
@@ -74,7 +80,21 @@ public class AppGui extends JFrame implements ActionListener {
     // EFFECTS: start GUI
     public void startGUI() {
         frame.setVisible(true);
+
+        frame.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                if (JOptionPane.showConfirmDialog(frame,
+                        "Are you sure you want to close this window?", "Close Window?",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
+                    System.exit(0);
+                    lp.printLog(EventLog.getInstance());
+                }
+            }
+        });
     }
+
 
     public static void main(String[] args) {
         AppGui myGUI = new AppGui();

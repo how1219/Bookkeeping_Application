@@ -24,6 +24,7 @@ public class SpendingList implements Writable {
     // EFFECTS: add a spending to the spending list
     public void addSpending(double amountSpent, String category, String date) {
         Spending spending = new Spending(amountSpent, category, date);
+        EventLog.getInstance().logEvent(new Event("Added spending: " + spending));
         listOfSpending.add(spending);
     }
 
@@ -31,6 +32,7 @@ public class SpendingList implements Writable {
     // MODIFIES: this
     // EFFECTS: remove a spending from the spending list
     public List<Spending> removeSpending(int removeIndex) {
+        EventLog.getInstance().logEvent(new Event("Removed spending: " + listOfSpending.get(removeIndex)));
         listOfSpending.remove(removeIndex);
         return listOfSpending;
     }

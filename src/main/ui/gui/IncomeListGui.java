@@ -1,9 +1,12 @@
 package ui.gui;
 
+import model.EventLog;
 import model.Income;
 import model.IncomeList;
 import persistence.JsonReaderIncome;
 import persistence.JsonWriterIncome;
+import ui.LogPrinter;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -37,6 +40,8 @@ public class IncomeListGui extends JFrame implements ActionListener {
     //https://www.swhealth.org/wp-content/uploads/2018/01/Calendar-Icon.jpg
     ImageIcon dateImage = new ImageIcon(new ImageIcon("./data/date.png").getImage()
             .getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+
+    private LogPrinter lp = new LogPrinter();
 
 
     // Construct a window for income list
@@ -74,6 +79,19 @@ public class IncomeListGui extends JFrame implements ActionListener {
 
         frame.add(listScrollPane, BorderLayout.CENTER);
         frame.add(buttonPane, BorderLayout.PAGE_END);
+
+        frame.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                if (JOptionPane.showConfirmDialog(frame,
+                        "Are you sure you want to close this window?", "Close Window?",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
+                    lp.printLog(EventLog.getInstance());
+                    System.exit(0);
+                }
+            }
+        });
     }
 
     // EFFECTS: If the user pressed "Remove" button, remove selected income from the list.

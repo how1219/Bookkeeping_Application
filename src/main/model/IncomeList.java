@@ -22,6 +22,7 @@ public class IncomeList implements Writable {
     // EFFECTS: add an income to the income list
     public void addIncome(double amountIncome, String date) {
         Income income = new Income(amountIncome, date);
+        EventLog.getInstance().logEvent(new Event("Added income: " + income));
         listOfIncomes.add(income);
     }
 
@@ -29,6 +30,7 @@ public class IncomeList implements Writable {
     // MODIFIES: this
     // EFFECTS: remove an income from the income list
     public List<Income> removeIncome(int removeIndex) {
+        EventLog.getInstance().logEvent(new Event("Removed income: " + listOfIncomes.get(removeIndex)));
         listOfIncomes.remove(removeIndex);
         return listOfIncomes;
     }
