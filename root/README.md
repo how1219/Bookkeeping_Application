@@ -58,4 +58,15 @@ Added income: Income{amount=5000.0, date='2022-January-29'}\
 Mon Mar 28 22:25:05 PDT 2022\
 Added income: Income{amount=9000.0, date='2022-March-28'}\
 Mon Mar 28 22:25:08 PDT 2022\
-Removed income: Income{amount=5000.0, date='2022-January-29'}\
+Removed income: Income{amount=5000.0, date='2022-January-29'}
+
+## Phase 4: Task 3
+- IncomeList and SpendingList are two very similar classes with a lot of repetitive code. I could make a new Class
+called ObjectList, and pass Income and Spending to this class. By doing so, more features related with list can be added
+ into this application without making more new classes.
+
+- For both Spending and Income list, they have a method of calculating total
+ amount. I could follow the Observer Pattern. Let SpendingList and IncomeList extends Subject, and delete
+ calculateTotal method. Then, I need to create a new class called userUpdate which will implements 
+ Observer, and implement the update method with the implementation of calculateTotal method from SpendingList or 
+ IncomeList class. This will meet the Observer Design Pattern.

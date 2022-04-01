@@ -1,5 +1,12 @@
-{"spending": [{
-    "date": "2022-January-1",
-    "amount": 1000,
-    "category": "Food and Groceries"
-}]}
+{"spending": [
+    {
+        "date": "2022-January-1",
+        "amount": 1000,
+        "category": "Food and Groceries"
+    },
+    {
+        "date": "2022-January-8",
+        "amount": 30,
+        "category": "Transportation"
+    }
+]}
