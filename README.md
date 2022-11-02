@@ -46,7 +46,7 @@ get my attention, but summing them up will reveal whether I need to cut back.
 - As a user, I want to be able to save my spending and income list.
 - As a user, I want to be able to load my saved spending and income list from file.
 
-## Phase 4: Task 2
+## Logging
 Mon Mar 28 22:23:56 PDT 2022\
 Added spending: Spending{amount=100.0, category='Food and Groceries', date='2022-March-28'}\
 Mon Mar 28 22:24:26 PDT 2022\
@@ -60,7 +60,7 @@ Added income: Income{amount=9000.0, date='2022-March-28'}\
 Mon Mar 28 22:25:08 PDT 2022\
 Removed income: Income{amount=5000.0, date='2022-January-29'}
 
-## Phase 4: Task 3
+## Future Improvements
 - IncomeList and SpendingList are two very similar classes with a lot of repetitive code. I could make a new Class
 called ObjectList, and pass Income and Spending to this class. By doing so, more features related with list can be added
  into this application without making more new classes.
